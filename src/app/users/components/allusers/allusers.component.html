@@ -1,0 +1,38 @@
+<div class="padding">
+  <div class="shadow raduis">
+    <table class="table table-striped tablediv">
+      <thead>
+        <tr class="border border-0 border-white py-2 ">
+          <th scope="col">Photo</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
+          <th scope="col"> </th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr class="align-middle border border-0 border-white" *ngFor="let user of Allusers | paginate: { id: 'users',
+        itemsPerPage: perpage,
+        currentPage: page,
+        totalItems: total }  ">
+        
+          <th scope="row" style="width: 6%;"> <img src="{{user.avatar}}" class="rounded-circle avatar"> </th>
+          <td  class="w">{{user.first_name}}</td>
+          <td  class="w">{{user.last_name}}</td>
+          <td  class="text-primary fw-bold w" >{{user.email}}</td>
+          <td class="btn-td">  <button class="btn btn-primary"> <fa-icon class="me-2" [icon]="icon"></fa-icon> <a class="text-white link-underline link-underline-opacity-0" href="mailto:`{{user.email}}`">Send email</a> </button> </td>
+        </tr>
+        
+      </tbody>
+    </table>
+  
+  
+    <div class="border border-0 border-top ">
+    <div class="d-flex justify-content-end mt-3" >
+      <pagination-controls (pageChange)="changepage($event)" id="users" ></pagination-controls>
+    </div>
+    </div>
+  </div>
+</div>
+
+
